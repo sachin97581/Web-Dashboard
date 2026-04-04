@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.home-container {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+}
+
+.home-container button {
+  padding: 10px 20px;
+  background: #2d2b70;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
