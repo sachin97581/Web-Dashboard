@@ -4,10 +4,33 @@
 
 ### 🖥️ Application Preview
 
+### Home Page
 <img src="Front-End%20App/dashboard/src/assets/Screenshot%201.png" width="600"/>
+
+### Dashboard
 <img src="Front-End%20App/dashboard/src/assets/Screenshot%202.png" width="600"/>
 <img src="Front-End%20App/dashboard/src/assets/Screenshot%203.png" width="600"/>
-<img src="assets/Screenshot1.png" width="600"/>
+
+### Master Page
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%204.png" width="600"/>
+
+### Customers Page
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%205.png" width="600"/>
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%206.png" width="600"/>
+
+### Items Page
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%207.png" width="600"/>
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%208.png" width="600"/>
+
+### Billing Page
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%209.png" width="600"/>
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%2010.png" width="600"/>
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%2011.png" width="600"/>
+
+### Invoice Detail Page
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%2012.png" width="600"/>
+<img src="Front-End%20App/dashboard/src/assets/Screenshot%2013.png" width="600"/>
+
 
 ## Prerequisites
 
