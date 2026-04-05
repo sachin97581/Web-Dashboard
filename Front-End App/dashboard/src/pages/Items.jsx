@@ -1,34 +1,3 @@
-// import Sidebar from "../components/Sidebar";
-// import Navbar from "../components/Navbar";
-// import { useNavigate } from "react-router-dom";
-
-// function Customers() {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div className="layout">
-//       <Sidebar />
-
-//       <div className="main">
-//         <Navbar />
-
-//         <h2>CUSTOMERS</h2>
-
-//         <button onClick={() => navigate("/add-customer")}>+ ADD</button>
-
-//         <div className="card-container">
-//           <div className="card">
-//             <h3>Gupta Enterprise Pvt. Ltd.</h3>
-//             <span>Active</span>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Customers;
-
 import { useEffect, useState } from "react";
 import API from "../api/api";
 import Sidebar from "../components/Sidebar";
@@ -38,9 +7,13 @@ function Customers() {
   const [customers, setCustomers] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    API.get("/customers").then((res) => setCustomers(res.data));
-  }, []);
+//   useEffect(() => {
+//     API.get("/customers").then((res) => setCustomers(res.data));
+//   }, []);
+
+    useEffect(() => {
+    API.get("/items").then((res) => setItems(res.data));
+    }, []);
 
   return (
     <div className="layout">

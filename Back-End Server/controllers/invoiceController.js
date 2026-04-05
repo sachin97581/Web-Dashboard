@@ -126,3 +126,86 @@ exports.getInvoiceById = (req, res) => {
         res.json(results);
     });
 };
+
+exports.getDashboardData = async (req, res) => {
+  try {
+     const sql = `
+    SELECT 
+        i.id,
+        i.invoice_id,
+        c.CustName AS customer_name,
+        SUM(it.SellingPrice * ii.quantity) AS total,
+        GROUP_CONCAT(it.ItemName SEPARATOR ', ') AS item_names
+    FROM invoices i
+    JOIN customers c ON i.customer_id = c.CustID
+    JOIN invoice_items ii ON ii.invoice_id = i.id
+    JOIN items it ON it.ItemCode = ii.item_code
+    GROUP BY i.id
+    ORDER BY i.id DESC
+    `;
+
+    db.query(sql, (err, result) => {
+      if (err) return res.status(500).json(err);
+      res.json(result);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+exports.getInvoiceDetails = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const sql = `
+      SELECT 
+        i.invoice_id,
+        c.CustName AS customer_name,
+        c.CustAddress AS address,
+        c.CustPAN AS pan,
+        c.CustGST AS gst,
+        it.ItemName AS item_name,
+        ii.quantity,
+        ii.price
+      FROM invoices i
+      JOIN customers c ON i.customer_id = c.CustID
+      JOIN invoice_items ii ON ii.invoice_id = i.id
+      JOIN items it ON it.ItemCode = ii.item_code
+      WHERE i.id = ?
+    `;
+
+    db.query(sql, [id], (err, result) => {
+      if (err) return res.status(500).json(err);
+      if (!result || result.length === 0) {
+        return res.status(404).json({ message: "Invoice not found" });
+      }
+
+      const invoice = {
+        invoice_id: result[0].invoice_id,
+        customer_name: result[0].customer_name,
+        address: result[0].address,
+        pan: result[0].pan,
+        gst: result[0].gst,
+        items: [],
+        total: 0,
+      };
+
+      result.forEach((row) => {
+        const amount = row.price * row.quantity;
+
+        invoice.items.push({
+          name: row.item_name,
+          quantity: row.quantity,
+          price: row.price,
+          amount,
+        });
+
+        invoice.total += amount;
+      });
+
+      res.json(invoice);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
