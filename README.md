@@ -1,6 +1,10 @@
 # LogiEdge - Billing & Inventory Management System
 
-## 📸 Screenshots
+## 📸 Screenshots and video link
+
+### Project Demo
+
+[Watch Demo Video](https://1drv.ms/v/c/e42c51e01d220606/IQDdtjTAHLiST4Ww2dLenX4tAW_axRGVQdb2X9aPoQ3U9N8?e=kodpqz)
 
 ### 🖥️ Application Preview
 
