@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.section {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #E2E8F0;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  font-family: 'DM Sans', sans-serif;
+  animation: fadeUp 0.3s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.section-header h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1E293B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.section-header span {
+  background: #EFF6FF;
+  color: #2563EB;
+  padding: 0.2rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #BFDBFE;
+}
+
+.section > p {
+  font-size: 0.9rem;
+  color: #475569;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #F8FAFC;
+}
+
+.section > p:last-of-type {
+  border-bottom: none;
+}
+
+.section > p strong {
+  color: #1E293B;
+  font-weight: 600;
+}
+
+.section h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1E293B;
+  margin-bottom: 1rem;
+}
+
+.section table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.section table th {
+  background: #F8FAFC;
+  color: #64748B;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.section table td {
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  color: #334155;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.section table tr:last-child td {
+  border-bottom: none;
+}
+
+.section table tr:hover td {
+  background: #F8FAFC;
+}
+
+.section > h3:last-child {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  color: #1E293B;
+  padding-top: 0.75rem;
+  border-top: 2px solid #E2E8F0;
+}

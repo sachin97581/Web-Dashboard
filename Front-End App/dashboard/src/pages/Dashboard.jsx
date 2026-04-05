@@ -1,56 +1,8 @@
-
-// import { useEffect, useState } from "react";
-// import API from "../api/api";
-// import Sidebar from "../components/Sidebar";
-// import "../styles/layout.css";
-
-// function Dashboard() {
-//   const [invoices, setInvoices] = useState([]);
-
-//   useEffect(() => {
-//     API.get("/invoices").then((res) => setInvoices(res.data));
-//   }, []);
-
-//   return (
-//     <div className="layout">
-//       <Sidebar />
-
-//       <div className="main">
-//         <h2>Dashboard</h2>
-
-//         <input placeholder="Search by Invoice ID" />
-
-//         <table>
-//           <thead>
-//             <tr>
-//               <th>Invoice ID</th>
-//               <th>Customer</th>
-//               <th>Amount</th>
-//             </tr>
-//           </thead>
-
-//           <tbody>
-//             {invoices.map((inv) => (
-//               <tr key={inv.id}>
-//                 <td>{inv.invoice_id}</td>
-//                 <td>{inv.customer_name}</td>
-//                 <td>{inv.total}</td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Dashboard;
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/api";
 import Sidebar from "../components/Sidebar";
-import "../styles/layout.css";
+import "../styles/dashboard.css";
 
 function Dashboard() {
   const [data, setData] = useState([]);

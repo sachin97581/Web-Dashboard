@@ -1,16 +1,7 @@
-// const db = require("../db");
-
-// exports.createItem = (data, callback) => {
-//     const sql = "INSERT INTO items (name, price) VALUES (?, ?)";
-//     db.query(sql, [data.name, data.price], callback);
-// };
-
-// exports.getItems = (callback) => {
-//     db.query("SELECT * FROM items", callback);
-// };
-
 const db = require("../db");
 
+
+// create items
 exports.createItem = (data, callback) => {
     const sql = `
         INSERT INTO items 
@@ -26,16 +17,12 @@ exports.createItem = (data, callback) => {
     ], callback);
 };
 
+// get all items
 exports.getItems = (callback) => {
-    db.query("SELECT * FROM items WHERE IsActive = 'Y'", callback);
+    // db.query("SELECT * FROM items WHERE IsActive = 'Y'", callback);
+    db.query("SELECT * FROM items", callback);
 };
 
-// exports.getItemById = (req, res) => {
-//     db.query("SELECT * FROM items WHERE ItemCode = ?", [req.params.id], (err, result) => {
-//         if (err) return res.status(500).json(err);
-//         res.json(result);
-//     });
-// };
 
 // Get Item by ID
 exports.getItemById = (id, callback) => {

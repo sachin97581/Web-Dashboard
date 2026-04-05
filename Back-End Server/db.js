@@ -1,19 +1,3 @@
-// const mysql = require("mysql2");
-
-// const db = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "sat@0752",
-//   database: "Web_Dashboard"
-// });
-
-// db.connect(err => {
-//   if (err) throw err;
-//   console.log("DB Connected");
-// });
-
-// module.exports = db;
-
 const mysql = require("mysql2");
 
 const db = mysql.createConnection({
@@ -25,10 +9,10 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    console.error("❌ DB Error:", err.message);
+    console.error("DB Error:", err.message);
     return;
   }
-  console.log("✅ DB Connected");
+  console.log("DB Connected");
 });
 
 module.exports = db;

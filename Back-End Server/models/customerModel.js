@@ -1,14 +1,3 @@
-// const db = require("../db");
-
-// exports.createCustomer = (data, callback) => {
-//     const sql = "INSERT INTO customers (name, email, phone, is_gst_registered) VALUES (?, ?, ?, ?)";
-//     db.query(sql, [data.name, data.email, data.phone, data.is_gst_registered], callback);
-// };
-
-// exports.getCustomers = (callback) => {
-//     db.query("SELECT * FROM customers", callback);
-// };
-
 const db = require("../db");
 
 exports.createCustomer = (data, callback) => {
@@ -28,16 +17,12 @@ exports.createCustomer = (data, callback) => {
     ], callback);
 };
 
-exports.getCustomers = (callback) => {
-    db.query("SELECT * FROM customers WHERE isActive = 'Y'", callback);
-};
 
-// exports.getCustomerById = (req, res) => {
-//     db.query("SELECT * FROM customers WHERE CustID = ?", [req.params.id], (err, result) => {
-//         if (err) return res.status(500).json(err);
-//         res.json(result);
-//     });
-// };.
+// get all customers
+exports.getCustomers = (callback) => {
+    // db.query("SELECT * FROM customers WHERE isActive = 'Y'", callback);
+    db.query("SELECT * FROM customers", callback);
+};
 
 // Get Customer by ID
 exports.getCustomerById = (id, callback) => {

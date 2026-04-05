@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.main input[type="text"],
+.main input[placeholder] {
+  width: 100%;
+  max-width: 360px;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #1E293B;
+  background: white;
+  outline: none;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.main input:focus {
+  border-color: #93C5FD;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+}
+
+.main input::placeholder {
+  color: #94A3B8;
+}
+
+.main table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  font-family: 'DM Sans', sans-serif;
+  animation: fadeUp 0.35s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.main table thead tr {
+  background: #F8FAFC;
+}
+
+.main table th {
+  padding: 0.75rem 1.2rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748B;
+  text-align: left;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.main table td {
+  padding: 0.8rem 1.2rem;
+  font-size: 0.9rem;
+  color: #334155;
+  border-bottom: 1px solid #F1F5F9;
+  vertical-align: middle;
+}
+
+.main table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.main table tbody tr:hover td {
+  background: #F8FAFC;
+}
+
+.view-btn {
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1.5px solid #BFDBFE;
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-btn:hover {
+  background: #DBEAFE;
+  border-color: #60A5FA;
+  transform: translateY(-1px);
+}

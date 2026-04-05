@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 import API from "../api/api";
-import "../styles/form.css";
+import "../styles/addItems.css";
 
 function AddItem() {
   const navigate = useNavigate();
@@ -22,27 +22,31 @@ function AddItem() {
     });
   };
 
-  // Submit Form
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      await API.post("/items", item); // backend route
-      alert("Item Added Successfully ✅");
+  try {
+    await API.post("/items", {
+      ItemName: item.name,
+      SellingPrice: item.price,
+      IsActive: item.status === "Active" ? "Y" : "N",
+    });
 
-      navigate("/items"); // go back to items page
-    } catch (error) {
-      console.error(error);
-      alert("Error adding item ❌");
-    }
-  };
+    alert("Item Added Successfully ✅");
+    navigate("/items");
+  } catch (error) {
+    // console.error(error);
+    alert("Error adding item ");
+  }
+};
 
   return (
     <div className="layout">
       <Sidebar />
 
       <div className="main">
-        <Navbar />
+        {/* <Navbar /> */}
 
         <h2>Add New Item</h2>
 

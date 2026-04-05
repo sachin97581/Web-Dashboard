@@ -1,47 +1,7 @@
-// const db = require("../db");
-
-// exports.createInvoice = (invoiceData, items, callback) => {
-//     const sql = "INSERT INTO invoices (invoice_id, customer_id, total_amount, gst_amount, final_amount) VALUES (?, ?, ?, ?, ?)";
-
-//     db.query(sql, [
-//         invoiceData.invoice_id,
-//         invoiceData.customer_id,
-//         invoiceData.total_amount,
-//         invoiceData.gst_amount,
-//         invoiceData.final_amount
-//     ], (err, result) => {
-//         if (err) return callback(err);
-
-//         const invoiceId = result.insertId;
-
-//         const itemQueries = items.map(item => {
-//             return new Promise((resolve, reject) => {
-//                 const sqlItem = `
-//                     INSERT INTO invoice_items (invoice_id, item_id, quantity, price, total)
-//                     VALUES (?, ?, ?, ?, ?)
-//                 `;
-//                 db.query(sqlItem, [
-//                     invoiceId,
-//                     item.item_id,
-//                     item.quantity,
-//                     item.price,
-//                     item.total
-//                 ], (err) => {
-//                     if (err) reject(err);
-//                     else resolve();
-//                 });
-//             });
-//         });
-
-//         Promise.all(itemQueries)
-//             .then(() => callback(null, result))
-//             .catch(err => callback(err));
-//     });
-// };
-
-
 const db = require("../db");
 
+
+// create invoice
 exports.createInvoice = (invoiceData, items, callback) => {
     const sql = `
         INSERT INTO invoices 
@@ -87,22 +47,12 @@ exports.createInvoice = (invoiceData, items, callback) => {
     });
 };
 
-
+// get all invoices
 exports.getAllInvoices = (callback) => {
     db.query("SELECT * FROM invoices ORDER BY created_at DESC", callback);
 };
 
-// exports.getInvoiceById = (invoice_id, callback) => {
-//     const sql = `
-//         SELECT i.*, ii.*, it.name AS item_name
-//         FROM invoices i
-//         JOIN invoice_items ii ON i.id = ii.invoice_id
-//         JOIN items it ON ii.item_id = it.id
-//         WHERE i.invoice_id = ?
-//     `;
-//     db.query(sql, [invoice_id], callback);
-// };
-
+// get invoice by ID with items
 exports.getInvoiceById = (invoice_id, callback) => {
     const sql = `
         SELECT 

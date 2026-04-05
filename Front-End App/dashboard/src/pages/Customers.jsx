@@ -1,45 +1,17 @@
-// import Sidebar from "../components/Sidebar";
-// import Navbar from "../components/Navbar";
-// import { useNavigate } from "react-router-dom";
-
-// function Customers() {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div className="layout">
-//       <Sidebar />
-
-//       <div className="main">
-//         <Navbar />
-
-//         <h2>CUSTOMERS</h2>
-
-//         <button onClick={() => navigate("/add-customer")}>+ ADD</button>
-
-//         <div className="card-container">
-//           <div className="card">
-//             <h3>Gupta Enterprise Pvt. Ltd.</h3>
-//             <span>Active</span>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Customers;
-
 import { useEffect, useState } from "react";
 import API from "../api/api";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import "../styles/customer.css";
 
 function Customers() {
   const [customers, setCustomers] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    API.get("/customers").then((res) => setCustomers(res.data));
+    API.get("/customers")
+      .then((res) => setCustomers(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -47,16 +19,24 @@ function Customers() {
       <Sidebar />
 
       <div className="main">
-        <h2>CUSTOMERS</h2>
-
-        <button onClick={() => navigate("/add-customer")}>+ ADD</button>
+        <div className="header">
+          <h2>CUSTOMERS</h2>
+          <button onClick={() => navigate("/add-customer")}>+ ADD</button>
+        </div>
 
         <div className="card-container">
           {customers.map((c) => (
-            <div className="card" key={c.id}>
-              <h3>{c.name}</h3>
-              <span className={c.status === "Active" ? "active" : "inactive"}>
-                {c.status}
+            <div className="card" key={c.CustID}>
+              <h3>{c.CustName}</h3>
+
+              <span
+                className={
+                  c.isActive === "Y"
+                    ? "badge active"
+                    : "badge inactive"
+                }
+              >
+                {c.isActive === "Y" ? "Active" : "In-Active"}
               </span>
             </div>
           ))}

@@ -6,62 +6,79 @@ function generateInvoiceId() {
     return `INVC${random}`;
 }
 
+
 exports.createInvoice = (req, res) => {
-    const { customer_id, items } = req.body;
+  const { customer_id, items } = req.body;
 
-    db.query("SELECT * FROM customers WHERE CustID = ?", [customer_id], (err, customerResult) => {
-        if (err) {
-            console.error("DB Error:", err);
-            return res.status(500).json(err);
-        }
+  //Step 1: Get last invoice ID
+  const getLastInvoice = `
+    SELECT invoice_id FROM invoices ORDER BY invoice_id DESC LIMIT 1
+  `;
 
-        // ✅ Check if customer exists
+  db.query(getLastInvoice, (err, invResult) => {
+    if (err) return res.status(500).json(err);
+
+    let newInvoiceId = "INVC00001";
+
+    if (invResult.length > 0) {
+      const lastId = invResult[0].invoice_id;
+      const num = parseInt(lastId.slice(4)) + 1;
+      newInvoiceId = "INVC" + num.toString().padStart(5, "0");
+    }
+
+    // Step 2: Get customer
+    db.query(
+      "SELECT * FROM customers WHERE CustID = ?",
+      [customer_id],
+      (err, customerResult) => {
+        if (err) return res.status(500).json(err);
+
         if (!customerResult || customerResult.length === 0) {
-            return res.status(404).json({ message: "Customer not found" });
+          return res.status(404).json({ message: "Customer not found" });
         }
 
         const customer = customerResult[0];
 
         let total_amount = 0;
 
-        const updatedItems = items.map(item => {
-            const total = item.price * item.quantity;
-            total_amount += total;
-            return { ...item, total };
+        const updatedItems = items.map((item) => {
+          const total = item.price * item.quantity;
+          total_amount += total;
+          return { ...item, total };
         });
 
         let gst_amount = 0;
 
-        // ✅ GST logic
+        // GST logic
         if (!customer.CustGST || customer.CustGST.trim() === "") {
-            gst_amount = total_amount * 0.18;
+          gst_amount = total_amount * 0.18;
         }
 
         const final_amount = total_amount + gst_amount;
 
         const invoiceData = {
-            invoice_id: generateInvoiceId(),
-            customer_id,
-            total_amount,
-            gst_amount,
-            final_amount
+          invoice_id: newInvoiceId,
+          customer_id,
+          total_amount,
+          gst_amount,
+          final_amount,
         };
 
+        // Insert invoice
         invoiceModel.createInvoice(invoiceData, updatedItems, (err) => {
-            if (err) {
-                console.error("Invoice Insert Error:", err);
-                return res.status(500).json(err);
-            }
+          if (err) return res.status(500).json(err);
 
-            res.json({
-                message: "Invoice created successfully",
-                invoice: invoiceData
-            });
+          res.json({
+            message: "Invoice created successfully",
+            invoice: invoiceData,
+          });
         });
-    });
+      }
+    );
+  });
 };
 
-// exports.createInvoice = (req, res) => {
+
 //     const { customer_id, items } = req.body;
 
 //     db.query("SELECT * FROM customers WHERE id = ?", [customer_id], (err, customerResult) => {
@@ -111,7 +128,7 @@ exports.createInvoice = (req, res) => {
 //         });
 //     });
 // };
-
+//get all invoices
 exports.getInvoices = (req, res) => {
     invoiceModel.getAllInvoices((err, results) => {
         if (err) return res.status(500).json(err);
@@ -119,6 +136,8 @@ exports.getInvoices = (req, res) => {
     });
 };
 
+
+// get invoice by ID
 exports.getInvoiceById = (req, res) => {
     invoiceModel.getInvoiceById(req.params.id, (err, results) => {
         if (err) return res.status(500).json(err);
@@ -153,6 +172,8 @@ exports.getDashboardData = async (req, res) => {
   }
 };
 
+
+// Get detailed invoice info for invoice page
 exports.getInvoiceDetails = async (req, res) => {
   const { id } = req.params;
 

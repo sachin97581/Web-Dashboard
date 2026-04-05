@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  animation: fadeUp 0.35s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.invoice-card {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #E2E8F0;
+  padding: 1.25rem 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.invoice-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: #BFDBFE;
+}
+
+.invoice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.invoice-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2563EB;
+}
+
+.amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.invoice-card p {
+  font-size: 0.85rem;
+  color: #64748B;
+  padding: 0.2rem 0;
+  line-height: 1.5;
+}
+
+.invoice-card p strong {
+  color: #334155;
+  font-weight: 600;
+}
+
+.date {
+  font-size: 0.78rem !important;
+  color: #94A3B8 !important;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #F1F5F9;
+}

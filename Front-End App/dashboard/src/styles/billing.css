@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.section {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #E2E8F0;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  animation: slideIn 0.3s ease both;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.section h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 0.75rem;
+}
+
+.section-header h3 {
+  margin-bottom: 0;
+}
+
+.details p {
+  font-size: 0.9rem;
+  color: #475569;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #F1F5F9;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.details p:last-child {
+  border-bottom: none;
+}
+
+.section > button,
+.main > .section > button {
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1.5px dashed #93C5FD;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+}
+
+.section > button:hover {
+  background: #DBEAFE;
+  border-color: #60A5FA;
+}
+
+.billing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+}
+
+.billing-table th {
+  background: #F8FAFC;
+  color: #64748B;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.billing-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #F1F5F9;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.billing-table tr:last-child td {
+  border-bottom: none;
+}
+
+.billing-table tr:hover td {
+  background: #F8FAFC;
+}
+
+.billing-table td button {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1.5px solid #E2E8F0;
+  background: white;
+  color: #2563EB;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  line-height: 1;
+}
+
+.billing-table td button:hover {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+}
+
+.qty {
+  display: inline-block;
+  min-width: 2rem;
+  text-align: center;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.section h3:last-child {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  color: #1E293B;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.cancel-btn {
+  background: white;
+  color: #64748B;
+  border: 1.5px solid #E2E8F0;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #FEF2F2;
+  color: #EF4444;
+  border-color: #FECACA;
+}
+
+.create-btn {
+  background: #2563EB;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.75rem;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+}
+
+.create-btn:hover {
+  background: #1D4ED8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+}

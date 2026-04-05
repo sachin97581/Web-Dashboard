@@ -2,35 +2,46 @@ import { useEffect, useState } from "react";
 import API from "../api/api";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import "../styles/items.css";
 
-function Customers() {
-  const [customers, setCustomers] = useState([]);
+function Items() {
+  const [items, setItems] = useState([]);
   const navigate = useNavigate();
 
-//   useEffect(() => {
-//     API.get("/customers").then((res) => setCustomers(res.data));
-//   }, []);
-
-    useEffect(() => {
-    API.get("/items").then((res) => setItems(res.data));
-    }, []);
+  useEffect(() => {
+    API.get("/items")
+      .then((res) => setItems(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="layout">
       <Sidebar />
 
       <div className="main">
-        <h2>CUSTOMERS</h2>
-
-        <button onClick={() => navigate("/add-customer")}>+ ADD</button>
+        <div className="header">
+          <h2>ITEMS</h2>
+          <button onClick={() => navigate("/add-item")}>+ ADD</button>
+        </div>
 
         <div className="card-container">
-          {customers.map((c) => (
-            <div className="card" key={c.id}>
-              <h3>{c.name}</h3>
-              <span className={c.status === "Active" ? "active" : "inactive"}>
-                {c.status}
+          {items.map((item) => (
+            <div className="card" key={item.ItemCode}>
+              <h3>{item.ItemName}</h3>
+
+              <span
+                className={
+                  item.IsActive === "Y"
+                    ? "badge active"
+                    : "badge inactive"
+                }
+              >
+                {item.IsActive === "Y" ? "Active" : "In-Active"}
               </span>
+
+              <p style={{ marginTop: "5px", fontWeight: "500" }}>
+                ₹ {item.SellingPrice}
+              </p>
             </div>
           ))}
         </div>
@@ -39,4 +50,4 @@ function Customers() {
   );
 }
 
-export default Customers;
+export default Items;
